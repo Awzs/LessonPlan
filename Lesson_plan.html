@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>趣味平衡能力训练 - 体育教案</title>
+    <style>
+        :root {
+            /* 主题色变量 */
+            --primary-color: #1F4E79;
+            --secondary-color: #2E75B6;
+            --success-color: #548235;
+            --warning-color: #BF8F00;
+            --info-color: #2E75B6;
+            --danger-color: #C65911;
+            
+            /* 背景色变量 */
+            --bg-primary: #DDEBF7;
+            --bg-success: #E2EFDA;
+            --bg-warning: #FFF2CC;
+            --bg-danger: #FCE4D6;
+            --bg-light: #E9EFF7;
+            
+            /* 间距变量 */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 12px;
+            --spacing-lg: 20px;
+            --spacing-xl: 25px;
+        }
+        
+        /* 基础页面样式设置 */
+        body {
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+            margin: var(--spacing-lg);
+            color: #333;
+            line-height: 1.5;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-lg);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            body {
+                margin: var(--spacing-sm);
+                padding: var(--spacing-sm);
+            }
+            
+            .info-grid {
+                grid-template-columns: 100% !important;
+            }
+            
+            table {
+                font-size: 14px;
+            }
+        }
+        
+        /* 标题样式 */
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xl);
+            font-size: 24px;
+            font-weight: bold;
+            padding: var(--spacing-md);
+            border-bottom: 2px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        h1:hover {
+            transform: scale(1.02);
+        }
+        
+        /* 表格基础样式 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: var(--spacing-xl);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        table:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        /* 表格单元格样式 */
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: var(--spacing-md);
+            text-align: left;
+            vertical-align: top;
+            transition: background-color 0.2s ease;
+        }
+        
+        td:hover {
+            background-color: rgba(0,0,0,0.02);
+        }
+        
+        /* 表格主标题样式 */
+        .table-header {
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            padding: var(--spacing-md);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* 表格次级标题样式 */
+        .section-header {
+            background-color: var(--secondary-color);
+            color: white;
+            font-weight: bold;
+            padding: var(--spacing-md);
+        }
+        
+        /* 子部分标题样式 */
+        .subsection-header {
+            background-color: var(--bg-primary);
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        /* 活动标题样式 */
+        .activity-header {
+            background-color: var(--bg-primary);
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        /* 信息网格布局 */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 12% 38% 12% 38%;
+            gap: var(--spacing-sm);
+        }
+        
+        /* 网格单元格样式 */
+        .info-grid th, .info-grid td {
+            border: 1px solid #e0e0e0;
+            padding: var(--spacing-sm) var(--spacing-md);
+            vertical-align: middle;
+            text-align: left;
+        }
+        
+        /* 信息标签样式 */
+        .info-label {
+            background-color: var(--bg-light);
+            font-weight: bold;
+            white-space: nowrap;
+            padding: var(--spacing-sm) var(--spacing-md);
+            text-align: center;
+            border-radius: 4px;
+        }
+        
+        /* 列表样式重置 */
+        ul, ol {
+            margin: 0;
+            padding-left: var(--spacing-lg);
+        }
+        
+        /* 列表项间距和动画 */
+        li {
+            margin-bottom: var(--spacing-xs);
+            transition: transform 0.2s ease;
+            position: relative;
+        }
+        
+        li:hover {
+            transform: translateX(4px);
+        }
+        
+        /* 时间高亮显示 */
+        .time-highlight {
+            background-color: var(--bg-warning);
+            font-weight: bold;
+            padding: 2px var(--spacing-xs);
+            border-radius: 3px;
+            display: inline-block;
+            transition: all 0.2s ease;
+        }
+        
+        .time-highlight:hover {
+            transform: scale(1.05);
+        }
+        
+        /* 器材高亮显示 */
+        .equipment-highlight {
+            background-color: var(--bg-success);
+            padding: 2px var(--spacing-xs);
+            border-radius: 3px;
+            display: inline-block;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .equipment-highlight:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        /* 注意事项样式 */
+        .note {
+            font-style: italic;
+            color: #666;
+            margin-top: var(--spacing-sm);
+            background-color: #FFFBEB;
+            padding: var(--spacing-xs);
+            border-left: 3px solid #FFC107;
+            border-radius: 0 4px 4px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .note:hover {
+            background-color: #FFF8E1;
+            transform: translateX(4px);
+        }
+    </style>
+</head>
+<body>
+    <h1>趣味平衡能力训练 - 体育教案</h1>
+    
+    <!-- 基本信息表格 -->
+    <table>
+        <tr>
+            <th colspan="4" class="table-header">课程基本信息</th>
+        </tr>
+        <tr class="info-grid">
+            <th class="info-label">教学主题</th>
+            <td>趣味平衡能力训练</td>
+            <th class="info-label">课程时长</th>
+            <td><span class="time-highlight">35分钟</span>（热身5' + 主体25' + 放松5'）</td>
+        </tr>
+        <tr class="info-grid">
+            <th class="info-label">年级</th>
+            <td>5年级</td>
+            <th class="info-label">学生人数</th>
+            <td>
+                <div style="line-height: 1.8;">
+                    预计9-10人
+                    <div style="margin-top: 8px;">
+                        <div style="background-color: #E2EFDA; padding: 4px 8px; margin: 4px 0; border-radius: 4px;">A类2人：运动能力强</div>
+                        <div style="background-color: #DDEBF7; padding: 4px 8px; margin: 4px 0; border-radius: 4px;">B类4人：基本能听懂指令</div>
+                        <div style="background-color: #FFF2CC; padding: 4px 8px; margin: 4px 0; border-radius: 4px;">C类4人：需要简化指令</div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr class="info-grid">
+            <th class="info-label">教学场地</th>
+            <td>西篮球场（利用球场中心大圆圈）</td>
+            <th class="info-label">器材准备</th>
+            <td>
+                <span class="equipment-highlight">平衡矮木桥</span>、
+                <span class="equipment-highlight">平衡垫</span>、
+                <span class="equipment-highlight">垫子</span>、
+                <span class="equipment-highlight">呼啦圈</span>、
+                <span class="equipment-highlight">标志盘</span>、
+                <span class="equipment-highlight">盲袋</span>、
+                <span class="equipment-highlight">软球</span>、
+                <span class="equipment-highlight">动物图片卡</span>
+            </td>
+        </tr>
+    </table>
+    
+    <!-- 教学目标表格 -->
+    <table>
+        <tr>
+            <th colspan="2" class="table-header">教学目标与设计理念</th>
+        </tr>
+        <tr>
+            <th class="info-label">核心设计<br>理念</th>
+            <td>
+                <div style="display: flex; flex-wrap: wrap; gap: 15px;">
+                    <div style="background-color: #E2EFDA; padding: 10px; border-radius: 5px; flex: 1; min-width: 150px;">
+                        <strong style="color: #548235;">趣味性</strong><br>
+                        融入动物模仿、故事情境、游戏元素
+                    </div>
+                    <div style="background-color: #FFF2CC; padding: 10px; border-radius: 5px; flex: 1; min-width: 150px;">
+                        <strong style="color: #BF8F00;">简单性</strong><br>
+                        一步式指令、视觉提示、分解动作
+                    </div>
+                    <div style="background-color: #DDEBF7; padding: 10px; border-radius: 5px; flex: 1; min-width: 150px;">
+                        <strong style="color: #2E75B6;">科学性</strong><br>
+                        由静到动、循序渐进、多感官刺激
+                    </div>
+                    <div style="background-color: #FCE4D6; padding: 10px; border-radius: 5px; flex: 1; min-width: 150px;">
+                        <strong style="color: #C65911;">组织性</strong><br>
+                        固定队形、明确视觉边界、清晰奖励机制
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th class="info-label">教学目标</th>
+            <td>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <div style="background-color: #DDEBF7; padding: 8px; border-radius: 5px;">
+                        <strong style="color: #2E75B6;">安全目标：</strong>确保所有学生安全参与，建立明确的规则意识
+                    </div>
+                    <div style="background-color: #E2EFDA; padding: 8px; border-radius: 5px;">
+                        <strong style="color: #548235;">基础目标：</strong>让所有学生尝试并体验至少一种平衡训练形式
+                    </div>
+                    <div style="background-color: #FFF2CC; padding: 8px; border-radius: 5px;">
+                        <strong style="color: #BF8F00;">核心目标：</strong>提高学生的静态和动态平衡能力，增强指令服从意识
+                    </div>
+                    <div style="background-color: #FCE4D6; padding: 8px; border-radius: 5px;">
+                        <strong style="color: #C65911;">拓展目标：</strong>培养学生的注意力和执行简单指令的能力，增强团队意识
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    
+    <!-- 课前准备表格 -->
+    <table>
+        <tr>
+            <th colspan="3" class="table-header">课前准备工作</th>
+        </tr>
+        <tr class="section-header">
+            <th width="25%">准备类别</th>
+            <th width="35%">具体内容</th>
+            <th width="40%">实施要点</th>
+        </tr>
+        <tr>
+            <td style="background-color: #E2EFDA; font-weight: bold;">场地区域划分</td>
+            <td>
+                <ul>
+                    <li>动物园区（热身区）</li>
+                    <li>森林区（基础训练区）</li>
+                    <li>冒险岛（器械训练区）</li>
+                    <li>游戏区（综合活动区）</li>
+                    <li>安全岛（等待区）</li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li>使用<span style="color: #FF0000;">红色</span>标志盘标记活动区</li>
+                    <li>使用<span style="color: #0070C0;">蓝色</span>标志盘标记等待区</li>
+                    <li>主活动区用胶带或呼啦圈拼接成大圆圈</li>
+                    <li>等待区铺设舒适垫子</li>
+                    <li>各区域间保持适当距离</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: #FFF2CC; font-weight: bold;">视觉辅助道具</td>
+            <td>
+                <ul>
+                    <li>动物图片卡（A4尺寸彩印）</li>
+                    <li>站位标记（彩色脚印贴纸）</li>
+                    <li>区域标识牌</li>
+                    <li>"暂停牌"（红色STOP标志）</li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li>准备企鹅、火烈鸟、青蛙、螃蟹等动物图片</li>
+                    <li>每个活动区放置对应的动物标志</li>
+                    <li>地面贴上彩色脚印作为站位提示</li>
+                    <li>制作大型视觉指令卡片作为备用</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: #FCE4D6; font-weight: bold;">安全防护措施</td>
+            <td>
+                <ul>
+                    <li>防护垫铺设</li>
+                    <li>区域安全边界</li>
+                    <li>器械安全检查</li>
+                    <li>出入口监管</li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li>所有器械周围铺设防护垫</li>
+                    <li>活动区与非活动区有明显色彩区分</li>
+                    <li>确保平衡木高度不超过10cm</li>
+                    <li>出口处安排助手以防学生离开</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    
+    <!-- 教学过程表格 -->
+    <table>
+        <tr>
+            <th colspan="4" class="table-header">教学过程</th>
+        </tr>
+        
+        <!-- 第一部分：热身活动 -->
+        <tr class="section-header">
+            <th colspan="4">一、热身活动：动物园冒险（5分钟）</th>
+        </tr>
+        <tr class="activity-header">
+            <th width="15%">活动环节</th>
+            <th width="35%">教学内容与步骤</th>
+            <th width="30%">指令与示范要点</th>
+            <th width="20%">组织与安全</th>
+        </tr>
+        <tr>
+            <td style="background-color: #DDEBF7;">
+                <strong>整队入场</strong>
+                <div style="margin-top: 5px; font-size: 12px; color: #666;">2分钟</div>
+            </td>
+            <td>
+                <ol>
+                    <li>学生进入场地，沿大圆圈行走</li>
+                    <li>听到"停"指令后停止行走</li>
+                    <li>按"站圆"指令站在圆圈上，保持间距</li>
+                    <li>进行简单的原地踏步与手臂摆动</li>
+                </ol>
+            </td>
+            <td>
+                <ul>
+                    <li><strong>指令</strong>："走圈"→"停"→"站圆"</li>
+                    <li><strong>手势</strong>：指向圆圈→举手停→指向站位点</li>
+                    <li><strong>示范</strong>：教师先示范沿圆圈行走</li>
+                    <li><strong>强化</strong>：对站好位置的学生即时表扬</li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li>用标志盘标记圆圈站位点</li>
+                    <li>保持学生间适当距离</li>
+                    <li>确保视线能覆盖所有学生</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: #E2EFDA;">
+                <strong>变身动物明星</strong>
+                <div style="margin-top: 5px; font-size: 12px; color: #666;">3分钟</div>
+            </td>
+            <td>
+                <ol>
+                    <li><strong>企鹅摇摆</strong>：双臂侧平举，小步摇摆走</li>
+                    <li><strong>火烈鸟站立</strong>：单腿站立3秒，换腿</li>
+                    <li><strong>青蛙跳</strong>：原地轻微下蹲后小跳2-3次</li>
+                    <li><strong>螃蟹爬行</strong>：四肢支撑横向移动</li>
+                </ol>
+                <div class="note">每个动作做5-10秒，然后切换</div>
+            </td>
+            <td>
+                <ul>
+                    <li><strong>指令简化</strong>：展示动物卡片，说"学××"</li>
+                    <li><strong>示范</strong>：教师夸张模仿动物动作</li>
+                    <li><strong>视觉提示</strong>：举起对应动物图片</li>
+                    <li><strong>切换指令</strong>："换一个"（配合手势）</li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li>保持原地或圆圈上活动</li>
+                    <li>控制动作幅度和难度</li>
+                    <li>教师站在圆圈中间</li>
+                    <li>随时注意学生情绪变化</li>
+                </ul>
+            </td>
+        </tr>
+        
+        <!-- 第二部分：基础平衡训练 -->
+        <tr class="section-header">
+            <th colspan="4">二、基础平衡训练 - 无器械（10分钟）</th>
+        </tr>
+        <tr>
+            <td style="background-color: #FFF2CC;">
+                <strong>静态平衡：<br>大树不倒</strong>
+                <div style="margin-top: 5px; font-size: 12px; color: #666;">5分钟</div>
+            </td>
+            <td>
+                <ol>
+                    <li><strong>双脚站立平衡</strong>
+                        <ul>
+                            <li>挺直站立模仿大树</li>
+                            <li>教师吹"大风"，学生保持不动</li>
+                            <li>每次维持5秒，中间休息</li>
+                        </ul>
+                    </li>
+                    <li><strong>踮脚尖平衡</strong>
+                        <ul>
+                            <li>模仿"树长高了"</li>
+                            <li>缓慢踮起脚尖维持2-3秒</li>
+                        </ul>
+                    </li>
+                    <li><strong>单脚站立</strong>
+                        <ul>
+                            <li>模仿"树被砍了"</li>
+                            <li>单腿站立3-5秒</li>
+                            <li>可加入摇头等平衡挑战</li>
+                        </ul>
+                    </li>
+                </ol>
+            </td>
+            <td>
+                <ul>
+                    <li><strong>情境引入</strong>："我们变成森林里的大树"</li>
+                    <li><strong>指令简化</strong>："站稳"→"长高"→"抬脚"</li>
+                    <li><strong>手势配合</strong>：手向下压→手向上举→示范抬脚</li>
+                    <li><strong>变化玩法</strong>："大风来了"（轻轻吹风）</li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li>仍使用圆圈队形</li>
+                    <li>需要帮助的学生可扶教师手臂</li>
+                    <li>A类学生示范，鼓励B类和C类学生</li>
+                    <li>单腿站立时靠近墙边</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: #DDEBF7;">
+                <strong>动态平衡：<br>森林探险</strong>
+                <div style="margin-top: 5px; font-size: 12px; color: #666;">5分钟</div>
+            </td>
+            <td>
+                <ol>
+                    <li><strong>森林小路</strong>
+                        <ul>
+                            <li>沿地面标记的线路行走</li>
+                            <li>保持匀速和平衡</li>
+                        </ul>
+                    </li>
+                    <li><strong>跳过小溪</strong>
+                        <ul>
+                            <li>双脚同时跳入呼啦圈中</li>
+                            <li>连续跳过3个呼啦圈</li>
+                        </ul>
+                    </li>
+                </ol>
+            </td>
+            <td>
+                <ul>
+                    <li><strong>场地准备</strong>：地面贴20cm宽的"小路"</li>
+                    <li><strong>队形转换</strong>："排成1排"（示范站位）</li>
+                    <li><strong>情境引入</strong>："走在森林小路上"/"跳到荷叶上"</li>
+                    <li><strong>简单指令</strong>："走路"/"跳"（配合指向动作）</li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li>转换为排队形式</li>
+                    <li>一次1-2名学生活动</li>
+                    <li>其他学生在"等待区"</li>
+                    <li>活动路线两侧铺设软垫</li>
+                    <li>等待指令："等一下"</li>
+                </ul>
+            </td>
+        </tr>
+        
+        <!-- 第三部分：进阶平衡训练 -->
+        <tr class="section-header">
+            <th colspan="4">三、进阶平衡训练 - 冒险岛器械辅助（10分钟）</th>
+        </tr>
+        <tr>
+            <td style="background-color: #E2EFDA;">
+                <strong>场地转换</strong>
+                <div style="margin-top: 5px; font-size: 12px; color: #666;">2分钟</div>
+            </td>
+            <td>
+                <ol>
+                    <li>引导学生注意力转向器械区</li>
+                    <li>排队依次转移到器械区</li>
+                    <li>明确等待区位置</li>
+                    <li>讲解基本安全规则</li>
+                </ol>
+            </td>
+            <td>
+                <ul>
+                    <li><strong>指令</strong>："看这里"→"排队走"→"坐好等"</li>
+                    <li><strong>视觉提示</strong>：指向器械区→示范排队→指向等待区</li>
+                    <li><strong>规则强调</strong>：一次一人，轮流参与</li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li>用标志盘围出器械活动区域</li>
+                    <li>等待区设置舒适垫子</li>
+                    <li>确保活动区与等待区视觉明显区分</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: #FCE4D6;">
+                <strong>平衡矮木桥<br>训练</strong>
+                <div style="margin-top: 5px; font-size: 12px; color: #666;">8分钟</div>
+            </td>
+            <td>
+                <ol>
+                    <li>学生依次上矮木桥</li>
+                    <li>保持平衡行走至终点</li>
+                    <li>下桥后获得表扬或小奖励</li>
+                    <li>返回等待区等待下一轮</li>
+                </ol>
+                <div class="note">如时间允许可进行第二轮尝试</div>
+            </td>
+            <td>
+                <ul>
+                    <li><strong>分步指令</strong>："上桥"→"走"→"下桥"</li>
+                    <li><strong>全程示范</strong>：教师先完整演示一次</li>
+                    <li><strong>即时反馈</strong>：过程中给予鼓励</li>
+                    <li><strong>成功奖励</strong>：击掌或贴纸</li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li><strong>安全第一</strong>：平衡木高度≤10cm</li>
+                    <li><strong>一对一辅助</strong>：教师全程保护</li>
+                    <li><strong>完全保护</strong>：两侧铺设软垫</li>
+                    <li><strong>分层教学</strong>：A类和B类学生先示范</li>
+                    <li><strong>等待区活动</strong>："坐岛"拍手游戏</li>
+                </ul>
+            </td>
+        </tr>
+        
+        <!-- 第四部分：综合游戏 -->
+        <tr class="section-header">
+            <th colspan="4">四、综合游戏：投球岛（5分钟）</th>
+        </tr>
+        <tr>
+            <td style="background-color: #DDEBF7;">
+                <strong>喂食小动物</strong>
+                <div style="margin-top: 5px; font-size: 12px; color: #666;">5分钟</div>
+            </td>
+            <td>
+                <ol>
+                    <li>学生回到主圆圈，站在脚印标记上</li>
+                    <li>保持平衡姿势（可选单腿站立增加难度）</li>
+                    <li>向中央"动物窝"投掷软球</li>
+                    <li>按顺序轮流投掷，计数成功次数</li>
+                </ol>
+            </td>
+            <td>
+                <ul>
+                    <li><strong>队形指令</strong>："回家"（指向主圆圈）</li>
+                    <li><strong>情境引入</strong>："小动物饿了，给它们食物"</li>
+                    <li><strong>游戏指令</strong>："站好"→"扔球"（配手势）</li>
+                    <li><strong>平衡挑战</strong>：可选择不同站姿（双脚/单脚）</li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li><strong>安全设计</strong>：使用超软球（海绵/布球）</li>
+                    <li><strong>投掷距离</strong>：控制在1-1.5米</li>
+                    <li><strong>组织方法</strong>：按圆圈顺序轮流投掷</li>
+                    <li><strong>成功体验</strong>：确保C类学生能投中</li>
+                </ul>
+            </td>
+        </tr>
+        
+        <!-- 第五部分：放松整理 -->
+        <tr class="section-header">
+            <th colspan="4">五、放松整理（5分钟）</th>
+        </tr>
+        <tr>
+            <td style="background-color: #FFF2CC;">
+                <strong>放松与整理</strong>
+                <div style="margin-top: 5px; font-size: 12px; color: #666;">5分钟</div>
+            </td>
+            <td>
+                <ol>
+                    <li>学生回到圆圈站好</li>
+                    <li>进行简单的伸展活动：
+                        <ul>
+                            <li>伸展上肢（"树枝伸展"）</li>
+                            <li>伸展下肢（"树根舒展"）</li>
+                            <li>深呼吸（"气球胀大和缩小"）</li>
+                        </ul>
+                    </li>
+                    <li>排队离场，领取奖励</li>
+                </ol>
+            </td>
+            <td>
+                <ul>
+                    <li><strong>收心指令</strong>："站好"（回到圆圈位置）</li>
+                    <li><strong>情境导入</strong>："小动物累了，要休息"</li>
+                    <li><strong>伸展指令</strong>："伸伸手"→"伸伸腿"（配动作）</li>
+                    <li><strong>离场指令</strong>："排队"→"走"</li>
+                    <li><strong>奖励指令</strong>："拿礼物"（指向盲袋）</li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li>圆圈队形，便于管理</li>
+                    <li>表扬遵守指令的学生</li>
+                    <li>出口处设置"宝藏箱"</li>
+                    <li>确保每个学生都有成功体验和奖励</li>
+                    <li>具体称赞表现良好的行为</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    
+    <!-- 教学调整策略 -->
+    <table>
+        <tr>
+            <th colspan="3" class="table-header">教学调整策略</th>
+        </tr>
+        <tr class="section-header">
+            <th width="20%">调整类别</th>
+            <th width="40%">具体策略</th>
+            <th width="40%">实施方法</th>
+        </tr>
+        <tr>
+            <td style="background-color: #DDEBF7; font-weight: bold;">组织管理技巧</td>
+            <td>
+                <ul>
+                    <li><strong>视觉管理系统</strong></li>
+                    <li><strong>轮换机制优化</strong></li>
+                    <li><strong>指令传达创新</strong></li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li>使用颜色编码区分区域（红=活动区、蓝=等待区）</li>
+                    <li>使用视觉计时器（如沙漏）显示活动时长</li>
+                    <li>每5分钟使用固定信号（如摇铃）集合清点人数</li>
+                    <li>准备"暂停牌"（红色STOP标志），应对紧急情况</li>
+                    <li>身体提示系统代替50%口令（举拇指=做得好，手掌下压=坐下）</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: #E2EFDA; font-weight: bold;">个别学生<br>特殊照顾</td>
+            <td>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div style="background-color: #E2EFDA; padding: 5px; border-radius: 4px;">
+                        <strong>A类学生</strong>
+                        <ul>
+                            <li>指定为"小助手"角色</li>
+                            <li>负责示范核心动作</li>
+                            <li>给予"小老师"徽章奖励</li>
+                        </ul>
+                    </div>
+                    <div style="background-color: #FFF2CC; padding: 5px; border-radius: 4px;">
+                        <strong>B类学生</strong>
+                        <ul>
+                            <li>布置"伙伴任务"</li>
+                            <li>提供微小变化挑战</li>
+                            <li>给予具体口头表扬</li>
+                        </ul>
+                    </div>
+                    <div style="background-color: #FCE4D6; padding: 5px; border-radius: 4px;">
+                        <strong>C类学生</strong>
+                        <ul>
+                            <li>安排在易接触位置</li>
+                            <li>动作拆分为小单元</li>
+                            <li>使用适度物理引导</li>
+                            <li>确保明确成功体验</li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <ul>
+                    <li>第一同学（A类）：担任示范员，协助管理等待区</li>
+                    <li>姜同学、董同学（B类）：扶持C类学生，完成基础动作后提供变化</li>
+                    <li>邹同学、蔡同学（C类）：采用"手把手引导-半辅助-独立"三阶段教学</li>
+                    <li>对所有学生给予及时、具体的积极反馈</li>
+                    <li>根据学生能力灵活调整难度，确保人人有成功体验</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: #FFF2CC; font-weight: bold;">突发情况应对</td>
+            <td>
+                <ul>
+                    <li><strong>情绪问题</strong></li>
+                    <li><strong>注意力分散</strong></li>
+                    <li><strong>拒绝参与</strong></li>
+                    <li><strong>活动难度过大</strong></li>
+                    <li><strong>人手不足</strong></li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li>允许暂时休息，不强制参与，提供观察机会</li>
+                    <li>使用明亮的标志物重新吸引注意，转换活动</li>
+                    <li>提供替代性活动，如收放器材、当"小助手"</li>
+                    <li>立即简化难度，确保成功体验，增强信心</li>
+                    <li>调整为小组式活动，由A类学生协助管理</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    
+    <!-- 教学评价与要点总结 -->
+    <table>
+        <tr>
+            <th colspan="2" class="table-header">教学评价与要点总结</th>
+        </tr>
+        <tr>
+            <td width="20%" style="background-color: #DDEBF7; font-weight: bold;">教学评价方式</td>
+            <td width="80%">
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <div style="background-color: #DDEBF7; padding: 8px; border-radius: 5px; flex: 1; min-width: 200px;">
+                        <strong>过程评价</strong>
+                        <ul>
+                            <li>学生参与度评估（估算百分比）</li>
+                            <li>情绪状态变化（课前vs课后）</li>
+                            <li>遵循简单指令的情况记录</li>
+                        </ul>
+                    </div>
+                    <div style="background-color: #E2EFDA; padding: 8px; border-radius: 5px; flex: 1; min-width: 200px;">
+                        <strong>结果评价</strong>
+                        <ul>
+                            <li>完成基础平衡动作的学生人数</li>
+                            <li>平衡动作的完成质量评估</li>
+                            <li>特殊行为事件记录</li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: #E2EFDA; font-weight: bold;">队伍调动设计<br>要点</td>
+            <td>
+                <ol>
+                    <li><strong>明确的活动区域</strong>：每个活动区域用标志盘或胶带清晰标记，视觉边界明确</li>
+                    <li><strong>简单队形</strong>：主要使用圆圈队形和两排队形，便于观察和管理全体学生</li>
+                    <li><strong>轮换机制</strong>：一次只让1-2名学生活动，其他学生在指定区域等待，控制混乱</li>
+                    <li><strong>等待区设置</strong>：设置舒适、有趣的等待区，提供简单活动减少等待烦躁</li>
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: #FFF2CC; font-weight: bold;">流程简化措施</td>
+            <td>
+                <ol>
+                    <li><strong>活动数量控制</strong>：整节课仅包含5-6个核心活动，避免频繁切换引起混乱</li>
+                    <li><strong>指令简化</strong>：全部使用单词或两词指令，如"站好"、"抬脚"，便于理解</li>
+                    <li><strong>示范为主</strong>：每个指令都有明确的视觉示范，减少语言理解障碍</li>
+                    <li><strong>时间控制</strong>：每个平衡动作保持时间不超过5秒，避免疲劳和注意力分散</li>
+                    <li><strong>渐进安排</strong>：先无器械建立规则意识，后有器械增加趣味性，循序渐进</li>
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: #FCE4D6; font-weight: bold;">安全保障设计</td>
+            <td>
+                <ol>
+                    <li><strong>器械难度控制</strong>：平衡木高度控制在10cm以内，确保安全系数</li>
+                    <li><strong>一对一协助</strong>：所有器械活动都有老师直接保护，预防意外</li>
+                    <li><strong>全面防护</strong>：垫子全面铺设，避免任何可能的跌倒伤害</li>
+                    <li><strong>明确边界</strong>：所有活动区域都有明确边界，防止学生走散</li>
+                    <li><strong>定期清点</strong>：每5分钟集体整队清点人数，确保安全</li>
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: #DDEBF7; font-weight: bold;">教学反思要点</td>
+            <td>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <div style="background-color: #DDEBF7; padding: 8px; border-radius: 5px; flex: 1; min-width: 150px;">
+                        <strong>情境设计</strong>
+                        <p>哪种情境设计最能激发学生兴趣？动物模仿活动是否有效提高参与度？</p>
+                    </div>
+                    <div style="background-color: #E2EFDA; padding: 8px; border-radius: 5px; flex: 1; min-width: 150px;">
+                        <strong>视觉提示</strong>
+                        <p>哪些视觉提示最有效？哪些需要改进？如何优化视觉系统？</p>
+                    </div>
+                    <div style="background-color: #FFF2CC; padding: 8px; border-radius: 5px; flex: 1; min-width: 150px;">
+                        <strong>流程设计</strong>
+                        <p>转场设计是否流畅？如何优化活动衔接？如何进一步简化指令系统？</p>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
